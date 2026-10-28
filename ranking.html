@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>男子プロをポイントランキング順に並べてみた｜2026年度</title>
+<meta name="description" content="2026年度 男子プロのポイントランキング上位30人を、ステータスカードで並べました。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="男子プロをポイントランキング順に並べてみた">
+<meta property="og:description" content="2026年度 男子プロのポイントランキング上位30人を、ステータスカードで並べました。">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px 16px 40px; }
+  a { color: #457B9D; }
+  .gallery-nav { text-align: center; margin-bottom: 8px; font-size: 14px; }
+  .gallery-nav a { text-decoration: none; }
+  .gallery-nav strong { color: #1D3557; }
+  h1 { margin: 8px 0 4px; text-align: center; font-size: clamp(22px, 5vw, 32px); color: #1D3557; line-height: 1.3; }
+  /* スマホ幅で「…並べてみ／た」のように1文字だけ次の行に落ちないよう、句の切れ目でだけ折り返す */
+  .phrase { display: inline-block; }
+  .asof { margin: 0 0 16px; text-align: center; font-size: 13px; color: #5f6b76; }
+  .summary { max-width: 760px; margin: 0 auto 24px; padding: 16px 20px; border-radius: 12px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+  .summary h2 { margin: 0 0 4px; font-size: 20px; color: #1D3557; }
+  .summary .sub { margin: 0 0 12px; font-size: 14px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 10px; padding: 0; list-style: none; font-size: 13px; }
+  .swatch { display: inline-block; width: 12px; height: 12px; margin-right: 4px; border-radius: 3px; vertical-align: -1px; }
+  .row { display: grid; grid-template-columns: 5.5em 1fr 3em; align-items: center; gap: 8px; margin: 8px 0; font-size: 13px; }
+  .row-label { font-weight: bold; }
+  .row-n { text-align: right; color: #5f6b76; }
+  .bar { display: flex; gap: 2px; height: 24px; }
+  .seg { display: flex; align-items: center; justify-content: center; min-width: 0; font-size: 12px; font-weight: bold; }
+  .seg:last-child { border-radius: 0 4px 4px 0; }
+  .takeaway { margin: 12px 0 0; font-weight: bold; color: #1D3557; }
+  details { margin-top: 10px; font-size: 13px; }
+  table { margin-top: 6px; border-collapse: collapse; }
+  th, td { padding: 4px 10px; border-bottom: 1px solid #e3e8ee; text-align: right; }
+  th[scope="row"] { text-align: left; }
+  .note { margin: 12px 0 0; font-size: 12px; color: #5f6b76; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 12px; }
+  /* 広い画面では1行10人（1〜10位・11〜20位…）にそろえる */
+  @media (min-width: 900px) { .grid { grid-template-columns: repeat(10, 1fr); } }
+  .grid a { color: inherit; text-decoration: none; }
+  figure { position: relative; margin: 0; }
+  figure img, .placeholder { display: block; width: 100%; aspect-ratio: 4 / 5; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+  .placeholder { display: flex; align-items: center; justify-content: center; text-align: center; background: #d5dbe1; color: #5f6b76; font-size: 11px; line-height: 1.5; }
+  .rank { position: absolute; top: -6px; left: -6px; min-width: 28px; height: 28px; padding: 0 6px; border-radius: 14px; background: #1D3557; color: #fff;
+    font-size: 13px; font-weight: bold; line-height: 28px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+  figcaption { padding-top: 4px; text-align: center; line-height: 1.35; }
+  .name { display: block; font-size: 13px; font-weight: bold; color: #1D3557; }
+  .pts { display: block; font-size: 11px; color: #5f6b76; }
+  .links { margin-top: 28px; text-align: center; font-size: 14px; line-height: 2; }
+</style>
+<script data-goatcounter="https://tanogolf.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<main>
+  <nav class="gallery-nav"><a href="index.html">全選手</a> / <a href="gallery_power.html">パワー型</a> / <a href="gallery_accuracy.html">正確性型</a> / <a href="gallery_decisiveness.html">決定力型</a> / <a href="gallery_stability.html">安定感型</a> / <strong>ポイントランキング順</strong></nav>
+  <h1>男子プロを<br><span class="phrase">ポイントランキング順に</span><span class="phrase">並べてみた</span></h1>
+  <p class="asof">2026年度 JGTOツアー 上位30人<span class="phrase">（2026年10月25日時点）</span></p>
+
+  <section class="summary" aria-labelledby="summary-title">
+    <h2 id="summary-title"><span class="phrase">上位10人は</span><span class="phrase">黄（決定力型）と</span><span class="phrase">緑（安定感型）だらけ！</span></h2>
+    <p class="sub">上位10人に赤（パワー型）は1人もいません。ツアー全体で一番多いのは青（正確性型）なのに…</p>
+    <ul class="legend"><li><span class="swatch" style="background:#2A9D8F"></span>緑＝安定感型</li><li><span class="swatch" style="background:#F1C40F"></span>黄＝決定力型</li><li><span class="swatch" style="background:#E63946"></span>赤＝パワー型</li><li><span class="swatch" style="background:#457B9D"></span>青＝正確性型</li></ul>
+      <div class="row"><span class="row-label">上位10人</span><span class="bar"><span class="seg" style="flex:4 1 0;background:#2A9D8F;color:#ffffff" title="上位10人：安定感型 4人（40%）">4</span><span class="seg" style="flex:5 1 0;background:#F1C40F;color:#1D3557" title="上位10人：決定力型 5人（50%）">5</span><span class="seg" style="flex:1 1 0;background:#457B9D;color:#ffffff" title="上位10人：正確性型 1人（10%）">1</span></span><span class="row-n">10人</span></div>
+      <div class="row"><span class="row-label">上位30人</span><span class="bar"><span class="seg" style="flex:10 1 0;background:#2A9D8F;color:#ffffff" title="上位30人：安定感型 10人（34%）">10</span><span class="seg" style="flex:9 1 0;background:#F1C40F;color:#1D3557" title="上位30人：決定力型 9人（31%）">9</span><span class="seg" style="flex:5 1 0;background:#E63946;color:#ffffff" title="上位30人：パワー型 5人（17%）">5</span><span class="seg" style="flex:5 1 0;background:#457B9D;color:#ffffff" title="上位30人：正確性型 5人（17%）">5</span></span><span class="row-n">29人</span></div>
+      <div class="row"><span class="row-label">ツアー全体</span><span class="bar"><span class="seg" style="flex:24 1 0;background:#2A9D8F;color:#ffffff" title="ツアー全体：安定感型 24人（22%）">24</span><span class="seg" style="flex:27 1 0;background:#F1C40F;color:#1D3557" title="ツアー全体：決定力型 27人（25%）">27</span><span class="seg" style="flex:28 1 0;background:#E63946;color:#ffffff" title="ツアー全体：パワー型 28人（25%）">28</span><span class="seg" style="flex:31 1 0;background:#457B9D;color:#ffffff" title="ツアー全体：正確性型 31人（28%）">31</span></span><span class="row-n">110人</span></div>
+    <p class="takeaway">スコアに直結する「パーオン」と「パット」の強さが、上位の共通点？</p>
+    <details><summary>数値で見る</summary>
+      <table>
+        <thead><tr><th scope="col">対象</th><th scope="col">安定感型</th><th scope="col">決定力型</th><th scope="col">パワー型</th><th scope="col">正確性型</th><th scope="col">人数</th></tr></thead>
+        <tbody>
+        <tr><th scope="row">上位10人</th><td>4</td><td>5</td><td>0</td><td>1</td><td>10</td></tr>
+        <tr><th scope="row">上位30人</th><td>10</td><td>9</td><td>5</td><td>5</td><td>29</td></tr>
+        <tr><th scope="row">ツアー全体</th><td>24</td><td>27</td><td>28</td><td>31</td><td>110</td></tr>
+        </tbody>
+      </table>
+    </details>
+    <p class="note">タイプ＝4項目（飛距離・FWキープ率・パット・パーオン率）の偏差値でいちばん高い項目で、カード上部の帯の色です。国内のスタッツ規定数に届いていない選手（海外ツアーが主戦場など）はカードが無く、集計から外しています（上位30人中1人）。ポイントランキングはJGTO公式の、大会の順位をポイント化した年間ランキングで、毎週月曜に更新しています。</p>
+  </section>
+
+  <div class="grid">
+      <a href="players/44934.html"><figure><span class="rank">1</span><img src="cards/細野勇策_2026.png" alt="細野 勇策" loading="lazy"><figcaption><span class="name">細野 勇策</span><span class="pts">2,382.974pt</span></figcaption></figure></a>
+      <a href="players/15836.html"><figure><span class="rank">2</span><img src="cards/藤本佳則_2026.png" alt="藤本 佳則" loading="lazy"><figcaption><span class="name">藤本 佳則</span><span class="pts">1,704.725pt</span></figcaption></figure></a>
+      <a href="players/2785.html"><figure><span class="rank">3</span><img src="cards/岩田寛_2026.png" alt="岩田 寛" loading="lazy"><figcaption><span class="name">岩田 寛</span><span class="pts">1,442.536pt</span></figcaption></figure></a>
+      <a href="players/15933.html"><figure><span class="rank">4</span><img src="cards/李尚熹_2026.png" alt="李 尚熹" loading="lazy"><figcaption><span class="name">李 尚熹</span><span class="pts">1,405.801pt</span></figcaption></figure></a>
+      <a href="players/16138.html"><figure><span class="rank">5</span><img src="cards/木下稜介_2026.png" alt="木下 稜介" loading="lazy"><figcaption><span class="name">木下 稜介</span><span class="pts">1,271.035pt</span></figcaption></figure></a>
+      <a href="players/16913.html"><figure><span class="rank">6</span><img src="cards/砂川公佑_2026.png" alt="砂川 公佑" loading="lazy"><figcaption><span class="name">砂川 公佑</span><span class="pts">1,253.529pt</span></figcaption></figure></a>
+      <a href="players/16914.html"><figure><span class="rank">7</span><img src="cards/岩﨑亜久竜_2026.png" alt="岩﨑 亜久竜" loading="lazy"><figcaption><span class="name">岩﨑 亜久竜</span><span class="pts">1,191.958pt</span></figcaption></figure></a>
+      <a href="players/100162.html"><figure><span class="rank">8</span><img src="cards/米澤蓮_2026.png" alt="米澤 蓮" loading="lazy"><figcaption><span class="name">米澤 蓮</span><span class="pts">1,165.974pt</span></figcaption></figure></a>
+      <a href="players/15921.html"><figure><span class="rank">9</span><img src="cards/香妻陣一朗_2026.png" alt="香妻 陣一朗" loading="lazy"><figcaption><span class="name">香妻 陣一朗</span><span class="pts">1,090.416pt</span></figcaption></figure></a>
+      <a href="players/16991.html"><figure><span class="rank">10</span><img src="cards/平本世中_2026.png" alt="平本 世中" loading="lazy"><figcaption><span class="name">平本 世中</span><span class="pts">1,055.474pt</span></figcaption></figure></a>
+      <a href="players/16853.html"><figure><span class="rank">11</span><img src="cards/石坂友宏_2026.png" alt="石坂 友宏" loading="lazy"><figcaption><span class="name">石坂 友宏</span><span class="pts">1,026.159pt</span></figcaption></figure></a>
+      <a href="players/16253.html"><figure><span class="rank">12</span><img src="cards/堀川未来夢_2026.png" alt="堀川 未来夢" loading="lazy"><figcaption><span class="name">堀川 未来夢</span><span class="pts">980.655pt</span></figcaption></figure></a>
+      <a href="players/15539.html"><figure><span class="rank">13</span><img src="cards/永野竜太郎_2026.png" alt="永野 竜太郎" loading="lazy"><figcaption><span class="name">永野 竜太郎</span><span class="pts">959.001pt</span></figcaption></figure></a>
+      <a href="players/16448.html"><figure><span class="rank">14</span><img src="cards/佐藤大平_2026.png" alt="佐藤 大平" loading="lazy"><figcaption><span class="name">佐藤 大平</span><span class="pts">910.222pt</span></figcaption></figure></a>
+      <a href="players/15741.html"><figure><span class="rank">15</span><img src="cards/小平智_2026.png" alt="小平 智" loading="lazy"><figcaption><span class="name">小平 智</span><span class="pts">889.616pt</span></figcaption></figure></a>
+      <a href="players/100913.html"><figure><span class="rank">16</span><img src="cards/出利葉太一郎_2026.png" alt="出利葉 太一郎" loading="lazy"><figcaption><span class="name">出利葉 太一郎</span><span class="pts">846.542pt</span></figcaption></figure></a>
+      <a href="players/16163.html"><figure><span class="rank">17</span><img src="cards/大堀裕次郎_2026.png" alt="大堀 裕次郎" loading="lazy"><figcaption><span class="name">大堀 裕次郎</span><span class="pts">843.983pt</span></figcaption></figure></a>
+      <a href="players/16995.html"><figure><span class="rank">18</span><img src="cards/河本力_2026.png" alt="河本 力" loading="lazy"><figcaption><span class="name">河本 力</span><span class="pts">843.775pt</span></figcaption></figure></a>
+      <a href="players/15853.html"><figure><span class="rank">19</span><img src="cards/今平周吾_2026.png" alt="今平 周吾" loading="lazy"><figcaption><span class="name">今平 周吾</span><span class="pts">837.105pt</span></figcaption></figure></a>
+      <a href="players/15925.html"><figure><span class="rank">20</span><img src="cards/宋永漢_2026.png" alt="宋 永漢" loading="lazy"><figcaption><span class="name">宋 永漢</span><span class="pts">799.249pt</span></figcaption></figure></a>
+      <a href="players/16945.html"><figure><span class="rank">21</span><img src="cards/大西魁斗_2026.png" alt="大西 魁斗" loading="lazy"><figcaption><span class="name">大西 魁斗</span><span class="pts">789.164pt</span></figcaption></figure></a>
+      <a href="players/16649.html"><figure><span class="rank">22</span><img src="cards/比嘉一貴_2026.png" alt="比嘉 一貴" loading="lazy"><figcaption><span class="name">比嘉 一貴</span><span class="pts">760.134pt</span></figcaption></figure></a>
+      <a href="players/16674.html"><figure><span class="rank">23</span><img src="cards/勝俣陵_2026.png" alt="勝俣 陵" loading="lazy"><figcaption><span class="name">勝俣 陵</span><span class="pts">734.862pt</span></figcaption></figure></a>
+      <a href="players/16715.html"><figure><span class="rank">24</span><img src="cards/坂本雄介_2026.png" alt="坂本 雄介" loading="lazy"><figcaption><span class="name">坂本 雄介</span><span class="pts">659.162pt</span></figcaption></figure></a>
+      <a href="players/15349.html"><figure><span class="rank">25</span><img src="cards/内藤寛太郎_2026.png" alt="内藤 寛太郎" loading="lazy"><figcaption><span class="name">内藤 寛太郎</span><span class="pts">655.200pt</span></figcaption></figure></a>
+      <figure class="nocard"><span class="rank">26</span><div class="placeholder">国内スタッツ<br>規定数未満<br>（集計外）</div><figcaption><span class="name">Ｓ・ノリス</span><span class="pts">624.750pt</span></figcaption></figure>
+      <a href="players/15842.html"><figure><span class="rank">27</span><img src="cards/稲森佑貴_2026.png" alt="稲森 佑貴" loading="lazy"><figcaption><span class="name">稲森 佑貴</span><span class="pts">602.780pt</span></figcaption></figure></a>
+      <a href="players/16773.html"><figure><span class="rank">28</span><img src="cards/大岩龍一_2026.png" alt="大岩 龍一" loading="lazy"><figcaption><span class="name">大岩 龍一</span><span class="pts">601.842pt</span></figcaption></figure></a>
+      <a href="players/100168.html"><figure><span class="rank">29</span><img src="cards/長野泰雅_2026.png" alt="長野 泰雅" loading="lazy"><figcaption><span class="name">長野 泰雅</span><span class="pts">567.477pt</span></figcaption></figure></a>
+      <a href="players/15400.html"><figure><span class="rank">30</span><img src="cards/池田勇太_2026.png" alt="池田 勇太" loading="lazy"><figcaption><span class="name">池田 勇太</span><span class="pts">547.923pt</span></figcaption></figure></a>
+  </div>
+
+  <p class="links"><a href="index.html">全選手のカード一覧</a><br><a href="shindan.html">あなたは何色？「あなたに近いプロ診断」</a></p>
+</main>
+</body>
+</html>
