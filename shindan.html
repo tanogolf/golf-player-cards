@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あなたに近いプロ診断</title>
+<meta name="description" content="4つの質問に答えるだけで、あなたとプレースタイルが似ている男子プロ（JGTO）・女子プロ（JLPGA）が1人ずつわかります。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="あなたに近いプロ診断｜男子・女子ゴルフツアー">
+<meta property="og:description" content="4つの質問で、あなたとプレースタイルが似ている男子プロ・女子プロがわかります。">
+<meta property="og:url" content="https://tanogolf.github.io/golf-player-cards/shindan.html">
+<!-- OGP画像は scripts/render_promo_images.py で生成（src/web/ogp.png → 公開時に site/ へコピー）。
+     SNSのクローラーは相対パスを解決しないため絶対URLで書く -->
+<meta property="og:image" content="https://tanogolf.github.io/golf-player-cards/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--
+  「あなたに近いプロ診断」ページ（公開時は site/shindan.html にコピーされる）。
+  男女それぞれの players.json（src/common/pipeline.py の create_player_data_json が出力）を読み込み、
+  回答者の4項目の凸凹（4項目平均からの差）がもっとも近い選手を男女1人ずつ選ぶ。
+  上手さの水準ではなく「得意・不得意の形」で比べるので、アマチュアの回答でもプロと比較できる。
+-->
+<style>
+  :root {
+    --navy: #1D3557;
+    --link: #457B9D;
+    --bg: #f5f5f5;
+    --surface: #ffffff;
+    --muted: #5f6b76;
+    --line: #dde3ea;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    background: var(--bg);
+    color: #333;
+    line-height: 1.6;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
+
+  .hero { text-align: center; padding: 32px 0 8px; }
+  .eyebrow { margin: 0; font-size: 12px; font-weight: bold; letter-spacing: .12em; color: var(--link); }
+  h1 { margin: 4px 0 8px; font-size: clamp(26px, 7vw, 36px); color: var(--navy); line-height: 1.3; }
+  .lead { margin: 0; font-size: 14px; color: var(--muted); }
+
+  .panel {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+    padding: 8px 20px 20px;
+    margin-top: 16px;
+  }
+
+  /* fieldsetのpadding-topは見出し(legend)の下に入るため、見出しの上の余白はmarginで取る */
+  fieldset.q { border: 0; margin: 18px 0 0; padding: 0 0 18px; border-bottom: 1px solid var(--line); min-width: 0; }
+  legend { padding: 0; margin-bottom: 12px; font-size: 16px; font-weight: bold; color: var(--navy); }
+  .q-no {
+    display: inline-block; margin-right: 8px; padding: 1px 8px; border-radius: 6px;
+    background: var(--accent); color: var(--accent-ink); font-size: 12px; vertical-align: 2px;
+  }
+  .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .scale label { position: relative; display: block; }
+  .scale input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+  .scale span {
+    display: flex; align-items: center; justify-content: center; height: 46px;
+    border: 2px solid var(--line); border-radius: 10px; background: #fff;
+    font-size: 17px; font-weight: bold; color: var(--muted);
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .scale input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .scale input:focus-visible + span { outline: 3px solid var(--link); outline-offset: 2px; }
+  .scale-ends { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--muted); }
+
+  .dist { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; font-size: 14px; color: var(--muted); }
+  .dist input {
+    width: 104px; height: 42px; padding: 0 10px; border: 2px solid var(--line); border-radius: 8px;
+    font-size: 16px; color: #333; background: #fff;
+  }
+  .dist input:focus-visible { outline: 3px solid var(--link); outline-offset: 1px; }
+
+  .primary {
+    display: block; width: 100%; height: 54px; margin-top: 20px; border: 0; border-radius: 12px;
+    background: var(--navy); color: #fff; font-size: 17px; font-weight: bold; cursor: pointer;
+  }
+  .primary:disabled { background: #b8c2cc; cursor: not-allowed; }
+  .primary:focus-visible, .secondary:focus-visible, .share-x:focus-visible, .others button:focus-visible {
+    outline: 3px solid var(--link); outline-offset: 2px;
+  }
+  .status { margin: 10px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
+  .status.error { color: #c0392b; font-weight: bold; }
+
+  .you { text-align: center; padding-top: 16px; }
+  .you-label { margin: 0; font-size: 14px; color: var(--muted); }
+  .you-type {
+    display: inline-block; margin: 6px 0; padding: 4px 18px; border-radius: 999px;
+    background: var(--type-color); color: var(--type-ink); font-size: 24px;
+  }
+  .you-catch { margin: 0; font-size: 14px; }
+  .radar { display: block; width: 100%; max-width: 300px; height: auto; margin: 4px auto 0; }
+
+  .matches-title { margin: 28px 0 0; text-align: center; font-size: 18px; color: var(--navy); }
+  .matches { display: grid; gap: 16px; margin-top: 12px; }
+  @media (min-width: 720px) { .matches { grid-template-columns: 1fr 1fr; } }
+  .match {
+    background: var(--surface); border-radius: 12px; box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+    border-top: 6px solid var(--type-color); padding: 16px;
+  }
+  .match-tour { margin: 0; font-size: 13px; font-weight: bold; color: var(--muted); }
+  .match h3 { margin: 0 0 10px; font-size: 22px; color: var(--navy); }
+  .match h3 small { font-size: 14px; font-weight: normal; }
+  .match-card { display: block; max-width: 300px; margin: 0 auto 12px; }
+  .match-card img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 1px 3px rgba(0, 0, 0, .15); }
+  .sim { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; }
+  .sim strong { font-size: 18px; color: var(--navy); }
+  .sim-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .sim-bar i { display: block; height: 100%; background: var(--type-color); }
+  .reason, .gap { margin: 8px 0 0; font-size: 14px; }
+  .others { margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--muted); }
+  .others button {
+    margin: 6px 6px 0 0; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px;
+    background: #fff; color: var(--navy); font-size: 13px; cursor: pointer;
+  }
+
+  .actions { display: grid; gap: 12px; margin-top: 20px; }
+  @media (min-width: 520px) { .actions { grid-template-columns: 1fr 1fr; } }
+  .share-x, .secondary {
+    display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 12px;
+    font-size: 15px; font-weight: bold; text-decoration: none; cursor: pointer;
+  }
+  .share-x { background: #000; color: #fff; }
+  .secondary { border: 2px solid var(--navy); background: #fff; color: var(--navy); }
+  .share-hint { margin: 8px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
+
+  .card-lead { margin: 4px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
+  .card-preview {
+    display: block; width: 100%; max-width: 320px; height: auto; margin: 12px auto 0;
+    border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, .18); background: #fff;
+  }
+  .card-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
+  .card-actions > button { flex: 1 1 200px; max-width: 320px; }
+  .save-card { background: var(--navy); color: #fff; }
+  .save-card:disabled { background: #b8c2cc; border-color: #b8c2cc; cursor: not-allowed; }
+
+  .links { margin-top: 28px; text-align: center; font-size: 14px; }
+  .links a { color: var(--link); }
+  .notes { margin: 16px 0 0; padding-left: 1.2em; font-size: 12px; color: var(--muted); }
+</style>
+<script data-goatcounter="https://tanogolf.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <p class="eyebrow" id="eyebrow">男子ツアー × 女子ツアー</p>
+    <h1>あなたに近いプロ診断</h1>
+    <p class="lead">4つの質問に答えると、あなたとプレースタイルが似ている<br>男子プロ・女子プロが1人ずつ見つかります。</p>
+  </header>
+
+  <form class="panel" id="quiz">
+    <div id="questions"></div>
+    <button type="submit" class="primary" id="submit" disabled>診断する</button>
+    <p class="status" id="status" aria-live="polite">選手データを読み込んでいます…</p>
+  </form>
+
+  <section id="result" hidden aria-live="polite">
+    <div class="panel you" id="you"></div>
+    <h2 class="matches-title">あなたに近いプロは…</h2>
+    <div class="matches">
+      <article class="match" id="match-mens"></article>
+      <article class="match" id="match-womens"></article>
+    </div>
+    <section id="card-section" aria-labelledby="card-title">
+      <h2 class="matches-title" id="card-title">あなたのステータスカード</h2>
+      <p class="card-lead">画像で保存して、SNSに投稿できます。</p>
+      <img class="card-preview" id="card-preview" alt="" width="1080" height="1350" hidden>
+      <div class="card-actions">
+        <button type="button" class="secondary save-card" id="save-card" disabled>画像を保存</button>
+        <button type="button" class="secondary" id="share-card" hidden>画像を共有</button>
+      </div>
+      <p class="share-hint" id="card-hint">スマホは、カードの長押しでも保存できます。</p>
+    </section>
+    <div class="actions">
+      <a class="share-x" id="share-x" target="_blank" rel="noopener">Xで結果をシェア</a>
+      <button type="button" class="secondary" id="retry">もう一度診断する</button>
+    </div>
+    <p class="share-hint">Instagramのストーリーズには、この画面をスクリーンショットしてどうぞ。</p>
+  </section>
+
+  <nav class="links">
+    選手カード一覧：<a href="index.html" data-goatcounter-click="click/男子一覧">男子（JGTO）</a> ／
+    <a href="women/index.html" data-goatcounter-click="click/女子一覧">女子（JLPGA）</a>
+  </nav>
+  <ul class="notes">
+    <li>診断は、4項目（パワー・正確性・安定感・決定力）の「得意・不得意の形」の近さで選んでいます。実力の比較ではありません。</li>
+    <li id="note-source">プロのデータはJGTO・JLPGA公式サイトのシーズン成績（部門別ランキング）に基づきます。</li>
+    <li>プロの飛距離は、ツアーの計測ホールでの平均値です。</li>
+  </ul>
+</main>
+
+<script>
+  "use strict";
+
+  const TOURS = [
+    { key: "mens", short: "男子", label: "男子プロ（JGTO）なら", dir: "" },
+    { key: "womens", short: "女子", label: "女子プロ（JLPGA）なら", dir: "women/" },
+  ];
+
+  // 質問はラウンドの流れ（ティーショット → 2打目 → パット）の順に並べる
+  const QUESTIONS = [
+    { key: "Distance", text: "ドライバーの飛距離、一緒に回る仲間と比べると？", low: "かなり飛ばない", high: "かなり飛ぶ" },
+    { key: "FW_Keep", text: "ティーショットはフェアウェイに残る？", low: "よく曲がる", high: "ほぼ曲がらない" },
+    { key: "GIR", text: "アイアンでグリーンに乗せられる？", low: "なかなか乗らない", high: "よく乗る" },
+    { key: "Putts", text: "パターは得意？", low: "3パットが多い", high: "よく沈める" },
+  ];
+
+  const RATING_STEP = 7.5; // 回答1段階あたりの偏差値換算幅（1〜5 → 35〜65）
+  // 凸凹の距離 → 似ている度(%)の換算係数。全625通りの回答で、最も近い選手との距離の
+  // 中央値が約6（→約90%）、90パーセンタイルが約11（→約80%）になるよう調整した
+  const SIM_SLOPE = 1.7;
+  const BALANCE_COLOR = "#1D3557";
+
+  const data = {};
+  let statMeta = []; // players.json の stats（項目名・タイプ名・配色、表示順）
+  let metaByKey = {};
+
+  const $ = (id) => document.getElementById(id);
+
+  // アクセス解析（GoatCounter）にイベントを送る。計測スクリプトは公開時に publish_weekly_update.py が
+  // 差し込むため、手元での確認時や未設定の場合（window.goatcounter が無い）は何もしない
+  function track(path) {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, event: true });
+  }
+
+  function esc(text) {
+    return String(text).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  }
+
+  // 背景色に重ねる文字色（明るい色＝黄色などには濃紺、それ以外は白）
+  function inkFor(hex) {
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luminance > 0.6 ? "#1D3557" : "#ffffff";
+  }
+
+  function centered(values) {
+    const keys = statMeta.map((s) => s.key);
+    const mean = keys.reduce((sum, k) => sum + values[k], 0) / keys.length;
+    return Object.fromEntries(keys.map((k) => [k, values[k] - mean]));
+  }
+
+  function renderQuestions() {
+    $("questions").innerHTML = QUESTIONS.map((q, i) => {
+      const color = metaByKey[q.key].color;
+      const options = [1, 2, 3, 4, 5].map((v) =>
+        `<label><input type="radio" name="${q.key}" value="${v}" required aria-label="${v}（${v === 1 ? q.low : v === 5 ? q.high : "5段階中" + v}）"><span>${v}</span></label>`
+      ).join("");
+      const distanceInput = q.key === "Distance"
+        ? `<label class="dist">ドライバーのだいたいの飛距離（わかれば）
+             <input type="number" id="distance" inputmode="numeric" min="50" max="400" step="1" placeholder="例: 220"> yd</label>`
+        : "";
+      return `<fieldset class="q" style="--accent:${color};--accent-ink:${inkFor(color)}">
+          <legend><span class="q-no">Q${i + 1}</span>${esc(q.text)}</legend>
+          <div class="scale">${options}</div>
+          <div class="scale-ends"><span>1：${esc(q.low)}</span><span>5：${esc(q.high)}</span></div>
+          ${distanceInput}
+        </fieldset>`;
+    }).join("");
+  }
+
+  function readAnswers() {
+    const form = $("quiz");
+    const ratings = {};
+    for (const q of QUESTIONS) {
+      const checked = form.querySelector(`input[name="${q.key}"]:checked`);
+      if (!checked) return null;
+      ratings[q.key] = Number(checked.value);
+    }
+    const distanceText = $("distance").value.trim();
+    return { ratings, distance: distanceText ? Number(distanceText) : null };
+  }
+
+  function updateSubmitState() {
+    const ready = Object.keys(data).length === TOURS.length;
+    const answered = readAnswers() !== null;
+    $("submit").disabled = !(ready && answered);
+    if (ready) $("status").textContent = answered ? "" : "すべての質問に答えると診断できます。";
+  }
+
+  // 回答者のタイプは自分の4項目の中での相対的な得意分野で決める。キャッチコピーはプロ用
+  // （「規格外の飛距離で〜」等）を流用すると、控えめに答えた初心者には言い過ぎになるため専用の文言にする
+  function userType(ratings) {
+    const keys = statMeta.map((s) => s.key);
+    const max = Math.max(...keys.map((k) => ratings[k]));
+    const tops = keys.filter((k) => ratings[k] === max);
+    if (tops.length >= 3) {
+      const catchphrase = max <= 2 ? "これから全部伸ばせる、伸びしろ無限大" : "大きな穴のないオールラウンダー";
+      return { label: "バランス型", color: BALANCE_COLOR, catchphrase };
+    }
+    if (tops.length === 2) {
+      const [a, b] = tops.map((k) => metaByKey[k]);
+      return { label: `${a.name}×${b.name}型`, color: a.color, catchphrase: `「${a.name}」と「${b.name}」の二刀流` };
+    }
+    const meta = metaByKey[tops[0]];
+    return { label: meta.type_label, color: meta.color, catchphrase: `いちばんの武器は「${meta.name}」` };
+  }
+
+  function rankPlayers(tourKey, userCentered) {
+    const keys = statMeta.map((s) => s.key);
+    return data[tourKey].players
+      .map((player) => {
+        const pc = centered(player.scores);
+        const d = Math.hypot(...keys.map((k) => userCentered[k] - pc[k]));
+        return { player, pc, sim: Math.max(0, Math.min(99, Math.round(100 - SIM_SLOPE * d))), d };
+      })
+      .sort((a, b) => a.d - b.d)
+      .slice(0, 3);
+  }
+
+  // 照合と同じく「それぞれの4項目平均からの凸凹」（uc=回答者, pc=選手）の向きが揃う項目を理由に挙げる
+  function reasonText(ratings, uc, pc) {
+    const keys = statMeta.map((s) => s.key);
+    const names = (ks) => ks.map((k) => metaByKey[k].name).join("・");
+    const strong = keys.filter((k) => uc[k] > 0 && pc[k] > 0);
+    const modest = keys.filter((k) => uc[k] < 0 && pc[k] < 0);
+    const parts = [];
+    if (strong.length) {
+      const prefix = strong.every((k) => ratings[k] >= 4) ? "得意な" : "比較的得意な";
+      parts.push(`${prefix}「${names(strong)}」が共通`);
+    }
+    if (modest.length) parts.push(`「${names(modest)}」が控えめなところまでそっくり`);
+    if (parts.length) return parts.join("、") + "。";
+    const flat = keys.every((k) => uc[k] === 0);
+    return flat ? "どちらも得意・不得意の差が小さいバランス型。" : "4項目の得意・不得意の形が近い選手です。";
+  }
+
+  function gapText(player, userDistance) {
+    if (userDistance === null) return "";
+    const pro = player.stats.Distance;
+    const diff = Math.round(pro - userDistance);
+    const detail = diff > 0 ? `あなた＋${diff}yd` : diff < 0 ? `あなたの方が${-diff}yd上！` : "あなたと同じ！";
+    return `<p class="gap">ドライバー飛距離 ${Math.round(pro)}yd（${detail}）</p>`;
+  }
+
+  function radarSvg(values, color) {
+    const R = 80, MIN = 30, MAX = 70;
+    const keys = statMeta.map((s) => s.key);
+    const angle = (i) => (Math.PI * 2 * i) / keys.length - Math.PI / 2; // 真上から時計回り（カードと同じ配置）
+    const radius = (v) => (R * (Math.max(MIN, Math.min(MAX, v)) - MIN)) / (MAX - MIN);
+    const point = (i, r) => [Math.cos(angle(i)) * r, Math.sin(angle(i)) * r];
+
+    const rings = [40, 50, 60, 70].map((v) =>
+      `<circle r="${radius(v).toFixed(1)}" fill="none" stroke="#d5dbe1" stroke-width="1"/>`).join("");
+    const spokes = keys.map((_, i) => {
+      const [x, y] = point(i, R);
+      return `<line x1="0" y1="0" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#d5dbe1" stroke-width="1"/>`;
+    }).join("");
+    const shape = keys.map((k, i) => point(i, radius(values[k])).map((n) => n.toFixed(1)).join(",")).join(" ");
+    const dots = keys.map((k, i) => {
+      const [x, y] = point(i, radius(values[k]));
+      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${color}"/>`;
+    }).join("");
+    const labels = keys.map((k, i) => {
+      const [x, y] = point(i, R + 12);
+      const anchor = Math.abs(x) < 1 ? "middle" : x > 0 ? "start" : "end";
+      const dy = y < -1 ? "-0.2em" : y > 1 ? "0.9em" : "0.35em";
+      return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" dy="${dy}" text-anchor="${anchor}" font-size="14" font-weight="bold" fill="#1D3557">${esc(metaByKey[k].name)}</text>`;
+    }).join("");
+
+    return `<svg class="radar" viewBox="-150 -112 300 224" role="img" aria-label="あなたのプレースタイル（${
+      keys.map((k) => `${metaByKey[k].name}${values[k] > 50 ? "が得意" : values[k] < 50 ? "は控えめ" : "は普通"}`).join("、")
+    }）">${rings}${spokes}<polygon points="${shape}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="2.5"/>${dots}${labels}</svg>`;
+  }
+
+  // ---- あなたのカード（画像） ----
+  // 診断結果をトレーディングカード風のPNG（1080x1350、プロのカードと同じ4:5）にして保存・共有できるようにする。
+  // ブラウザ内（Canvas）で描くのでサーバーは使わない。回答は自己申告の5段階なので、プロのカードにある
+  // S〜Dのランクは付けない（実測ではないため）。
+  const CARD_W = 1080, CARD_H = 1350;
+  const CARD_FONT = '"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif';
+  const CARD_INK = "#1D3557", CARD_MUTED = "#5f6b76", CARD_FAINT = "#b8c2cc", CARD_NOTE = "#8a949e";
+  const AXIS_SUB = { Distance: "飛距離", FW_Keep: "FWキープ", Putts: "パット", GIR: "パーオン" };
+
+  let lastResult = null; // 直近の診断結果（回答・タイプ・各項目の値）。カードの描画に使う
+  const selection = {};  // 画面に表示中の選手（ツアー別）。「ほかに近い選手」で切り替えるとカードも変わる
+  let cardUrl = null;    // プレビュー用のBlob URL
+  let cardFile = null;   // 保存・共有用のPNG
+  let cardToken = 0;     // 続けて切り替えたとき、古い描画結果で上書きしないための番号
+
+  function cardFont(px, weight = "normal") { return `${weight} ${px}px ${CARD_FONT}`; }
+
+  function roundRectPath(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function withAlpha(hex, alpha) {
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  // 書式の違う文字（runs）を横に並べ、全体を cx を中心に描く。maxWidth を超えるときは全体を縮める
+  function drawRuns(ctx, runs, cx, y, maxWidth) {
+    const widthAt = (scale) => runs.reduce((sum, run) => {
+      ctx.font = cardFont(run.px * scale, run.weight);
+      return sum + ctx.measureText(run.text).width;
+    }, 0);
+    const natural = widthAt(1);
+    const scale = natural > maxWidth ? maxWidth / natural : 1;
+    let x = cx - widthAt(scale) / 2;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    for (const run of runs) {
+      ctx.font = cardFont(run.px * scale, run.weight);
+      ctx.fillStyle = run.color;
+      ctx.fillText(run.text, x, y);
+      x += ctx.measureText(run.text).width;
+    }
+  }
+
+  function drawCardRadar(ctx, { cx, cy, R, values, color, ratings, distance }) {
+    const keys = statMeta.map((s) => s.key);
+    const MIN = 30, MAX = 70; // 画面上のレーダー（radarSvg）と同じ目盛り
+    const angle = (i) => (Math.PI * 2 * i) / keys.length - Math.PI / 2;
+    const radius = (v) => (R * (Math.max(MIN, Math.min(MAX, v)) - MIN)) / (MAX - MIN);
+    const point = (i, r) => [cx + Math.cos(angle(i)) * r, cy + Math.sin(angle(i)) * r];
+
+    ctx.lineWidth = 3;
+    for (const v of [40, 50, 60, 70]) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius(v), 0, Math.PI * 2);
+      ctx.strokeStyle = v === 70 ? CARD_INK : "#c3cad1";
+      ctx.stroke();
+    }
+    ctx.strokeStyle = "#c3cad1";
+    keys.forEach((_, i) => {
+      const [x, y] = point(i, R);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    });
+
+    ctx.beginPath();
+    keys.forEach((k, i) => {
+      const [x, y] = point(i, radius(values[k]));
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.closePath();
+    ctx.fillStyle = withAlpha(color, 0.28);
+    ctx.fill();
+    ctx.lineWidth = 7;
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    keys.forEach((k, i) => {
+      const [x, y] = point(i, radius(values[k]));
+      ctx.beginPath();
+      ctx.arc(x, y, 12, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "#fff";
+      ctx.stroke();
+    });
+
+    // 項目名（項目の色のピル）・内容・5段階の星を、軸の外側に並べる
+    const PILL_H = 48, SUB_H = 30, STAR_H = 40, GAP = 6;
+    const blockH = PILL_H + GAP + SUB_H + STAR_H;
+    keys.forEach((k, i) => {
+      const meta = metaByKey[k];
+      const dx = Math.cos(angle(i)), dy = Math.sin(angle(i));
+      const [ax, ay] = point(i, R + 22);
+      const top = dy < -0.5 ? ay - blockH : dy > 0.5 ? ay : ay - blockH / 2;
+      const sub = k === "Distance" && distance ? `飛距離 ${Math.round(distance)}yd` : (AXIS_SUB[k] || "");
+      const stars = [
+        { text: "★".repeat(ratings[k]), px: 32, color: CARD_INK },
+        { text: "☆".repeat(5 - ratings[k]), px: 32, color: CARD_FAINT },
+      ];
+      ctx.font = cardFont(30, "bold");
+      const pillW = ctx.measureText(meta.name).width + 44;
+      ctx.font = cardFont(24);
+      const subW = ctx.measureText(sub).width;
+      ctx.font = cardFont(32);
+      const starW = ctx.measureText("★★★★★").width;
+      const blockW = Math.max(pillW, subW, starW);
+      const mx = Math.abs(dx) < 0.3 ? ax : dx > 0 ? ax + blockW / 2 : ax - blockW / 2;
+      roundRectPath(ctx, mx - pillW / 2, top, pillW, PILL_H, PILL_H / 2);
+      ctx.fillStyle = meta.color;
+      ctx.fill();
+      drawRuns(ctx, [{ text: meta.name, px: 30, weight: "bold", color: inkFor(meta.color) }], mx, top + PILL_H / 2, pillW);
+      drawRuns(ctx, [{ text: sub, px: 24, color: CARD_MUTED }], mx, top + PILL_H + GAP + SUB_H / 2, blockW);
+      drawRuns(ctx, stars, mx, top + PILL_H + GAP + SUB_H + STAR_H / 2, blockW);
+    });
+  }
+
+  function drawCard(ctx, { answers, type, userScores }) {
+    const color = type.color;
+    const mid = CARD_W / 2;
+
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, CARD_W, CARD_H);
+
+    // 枠・タイプ名の帯・「YOU」バッジ（プロのカードと同じ並び）
+    roundRectPath(ctx, 30, 20, 1020, 1310, 46);
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    roundRectPath(ctx, 66, 44, 770, 90, 22);
+    ctx.fillStyle = color;
+    ctx.fill();
+    drawRuns(ctx, [{ text: `◆ ${type.label} ◆`, px: 50, color: inkFor(color) }], 451, 89, 700);
+    roundRectPath(ctx, 856, 40, 158, 112, 22);
+    ctx.fillStyle = "#fff";
+    ctx.fill();
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    drawRuns(ctx, [{ text: "YOU", px: 54, weight: "bold", color: CARD_INK }], 935, 82, 130);
+    drawRuns(ctx, [{ text: "診断結果", px: 22, color: CARD_MUTED }], 935, 124, 130);
+
+    drawRuns(ctx, [{ text: "あなたのプレースタイル", px: 54, weight: "bold", color: CARD_INK }], mid, 200, 900);
+    drawRuns(ctx, [{ text: type.catchphrase, px: 32, color: CARD_MUTED }], mid, 256, 900);
+
+    drawCardRadar(ctx, {
+      cx: mid, cy: 650, R: 215, values: userScores, color,
+      ratings: answers.ratings, distance: answers.distance,
+    });
+
+    // 近いプロ（画面に表示中の男女1人ずつ）
+    roundRectPath(ctx, 75, 1034, 930, 178, 28);
+    ctx.fillStyle = withAlpha(color, 0.1);
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    drawRuns(ctx, [{ text: "★ あなたに近いプロ ★", px: 30, weight: "bold", color: "#333" }], mid, 1068, 800);
+    [["男子", "mens", 1118], ["女子", "womens", 1170]].forEach(([label, key, y]) => {
+      const { player, sim } = selection[key];
+      drawRuns(ctx, [
+        { text: `${label}プロなら `, px: 28, color: CARD_MUTED },
+        { text: player.name, px: 40, weight: "bold", color: CARD_INK },
+        { text: " 選手　似ている度 ", px: 28, color: CARD_MUTED },
+        { text: `${sim}%`, px: 38, weight: "bold", color: CARD_INK },
+      ], mid, y, 860);
+    });
+
+    // 注意書きと、このカードを見た人が診断にたどり着くためのURL
+    drawRuns(ctx, [{ text: "※得意・不得意の形が近いプロを選ぶ診断です。実力の比較ではありません。", px: 21, color: CARD_NOTE }], mid, 1236, 940);
+    drawRuns(ctx, [{ text: `${data.mens.year}年度 JGTO・JLPGA公式データに基づく　#あなたに近いプロ診断`, px: 21, color: CARD_NOTE }], mid, 1263, 940);
+    drawRuns(ctx, [{ text: location.host + location.pathname, px: 28, weight: "bold", color: CARD_INK }], mid, 1292, 940);
+  }
+
+  function canShareFile(file) {
+    try { return Boolean(navigator.canShare && navigator.canShare({ files: [file] })); } catch { return false; }
+  }
+
+  // カードの描画に失敗しても、診断結果そのものの表示は止めない（その場合はカードの欄だけ隠す）
+  function renderCard() {
+    if (!lastResult || !selection.mens || !selection.womens) return;
+    const token = ++cardToken;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = CARD_W;
+      canvas.height = CARD_H;
+      drawCard(canvas.getContext("2d"), lastResult);
+      $("save-card").disabled = true;
+      $("share-card").hidden = true;
+      canvas.toBlob((blob) => {
+        if (!blob || token !== cardToken) return;
+        if (cardUrl) URL.revokeObjectURL(cardUrl);
+        cardUrl = URL.createObjectURL(blob);
+        cardFile = new File([blob], "shindan-card.png", { type: "image/png" });
+        const img = $("card-preview");
+        img.src = cardUrl;
+        img.alt = `あなたのステータスカード（${lastResult.type.label}。男子プロなら${selection.mens.player.name}選手、女子プロなら${selection.womens.player.name}選手に近い）`;
+        img.hidden = false;
+        $("save-card").disabled = false;
+        $("share-card").hidden = !canShareFile(cardFile);
+        $("card-section").hidden = false;
+      }, "image/png");
+    } catch (error) {
+      console.error(error);
+      $("card-section").hidden = true;
+    }
+  }
+
+  function saveCard() {
+    if (!cardUrl) return;
+    track("click/カード保存");
+    const link = document.createElement("a");
+    link.href = cardUrl;
+    link.download = "shindan-card.png";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+  async function shareCard() {
+    if (!cardFile) return;
+    track("click/カード共有");
+    try {
+      await navigator.share({ files: [cardFile], text: `${shareText()}\n${shareUrl()}` });
+    } catch (error) {
+      if (error.name === "AbortError") return; // 共有シートを閉じただけ
+      console.error(error);
+      $("card-hint").textContent = "共有できませんでした。「画像を保存」してから投稿してください。";
+    }
+  }
+
+  function renderMatch(tour, ranked, selected, answers, userCentered) {
+    const el = $(`match-${tour.key}`);
+    const { player, pc, sim } = ranked[selected];
+    const typeColor = metaByKey[player.type].color;
+    el.style.setProperty("--type-color", typeColor);
+
+    const others = ranked
+      .map((entry, i) => ({ entry, i }))
+      .filter(({ i }) => i !== selected)
+      .map(({ entry, i }) => `<button type="button" data-index="${i}">${esc(entry.player.name)}（${entry.sim}%）</button>`)
+      .join("");
+
+    el.innerHTML = `
+      <p class="match-tour">${esc(tour.label)}</p>
+      <h3>${esc(player.name)} <small>選手（${esc(metaByKey[player.type].type_label)}）</small></h3>
+      <a class="match-card" href="${esc(`${tour.dir}players/${player.id}.html`)}" target="_blank" rel="noopener">
+        <img src="${esc(tour.dir + player.card)}" alt="${esc(player.name)}選手のステータスカード" width="1080" height="1350">
+      </a>
+      <p class="sim">似ている度 <strong>${sim}%</strong><span class="sim-bar" aria-hidden="true"><i style="width:${sim}%"></i></span></p>
+      <p class="reason">${esc(reasonText(answers.ratings, userCentered, pc))}</p>
+      ${gapText(player, answers.distance)}
+      <p class="others">ほかに近い選手：${others}</p>`;
+
+    el.querySelectorAll(".others button").forEach((button) => {
+      button.addEventListener("click", () => {
+        track("click/候補切替");
+        renderMatch(tour, ranked, Number(button.dataset.index), answers, userCentered);
+        updateShareLink();
+        renderCard();
+      });
+    });
+    el.querySelector(".match-card").addEventListener("click", () => track(`click/${tour.short}カード`));
+    el.dataset.playerName = player.name;
+    selection[tour.key] = ranked[selected];
+  }
+
+  function shareText() {
+    const type = $("you").dataset.typeLabel;
+    const mens = $("match-mens").dataset.playerName;
+    const womens = $("match-womens").dataset.playerName;
+    return `【あなたに近いプロ診断】私は「${type}」！\n男子プロなら${mens}選手、女子プロなら${womens}選手に似ているらしい⛳\n#あなたに近いプロ診断 #JGTO #JLPGA #ゴルフ`;
+  }
+
+  function shareUrl() {
+    return location.origin + location.pathname;
+  }
+
+  function updateShareLink() {
+    $("share-x").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText())}&url=${encodeURIComponent(shareUrl())}`;
+  }
+
+  function showResult(answers) {
+    const keys = statMeta.map((s) => s.key);
+    const userScores = Object.fromEntries(keys.map((k) => [k, 50 + (answers.ratings[k] - 3) * RATING_STEP]));
+    const userCentered = centered(userScores);
+    const type = userType(answers.ratings);
+
+    const you = $("you");
+    you.style.setProperty("--type-color", type.color);
+    you.style.setProperty("--type-ink", inkFor(type.color));
+    you.dataset.typeLabel = type.label;
+    you.innerHTML = `
+      <p class="you-label">あなたのプレースタイルは</p>
+      <p class="you-type">${esc(type.label)}</p>
+      <p class="you-catch">${esc(type.catchphrase)}</p>
+      ${radarSvg(userScores, type.color)}`;
+
+    for (const tour of TOURS) renderMatch(tour, rankPlayers(tour.key, userCentered), 0, answers, userCentered);
+    updateShareLink();
+    lastResult = { answers, type, userScores };
+    renderCard();
+
+    // 完了数・タイプの分布・よく一致する選手を集計できるようにする
+    track("shindan/完了");
+    track(`shindan/タイプ/${type.label}`);
+    for (const tour of TOURS) track(`shindan/${tour.short}/${$(`match-${tour.key}`).dataset.playerName}`);
+
+    $("result").hidden = false;
+    $("result").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  async function loadData() {
+    const responses = await Promise.all(TOURS.map((tour) =>
+      fetch(`${tour.dir}players.json`).then((res) => {
+        if (!res.ok) throw new Error(`${tour.dir}players.json: HTTP ${res.status}`);
+        return res.json();
+      })
+    ));
+    TOURS.forEach((tour, i) => { data[tour.key] = responses[i]; });
+    statMeta = data.mens.stats;
+    metaByKey = Object.fromEntries(statMeta.map((s) => [s.key, s]));
+  }
+
+  async function init() {
+    try {
+      await loadData();
+    } catch (error) {
+      console.error(error);
+      $("status").textContent = "選手データを読み込めませんでした。時間をおいて再度お試しください。";
+      $("status").classList.add("error");
+      return;
+    }
+
+    const year = data.mens.year;
+    $("eyebrow").textContent = `${year}年度 JGTO × JLPGA 公式データで診断`;
+    $("note-source").textContent = `プロのデータは${year}年度のJGTO・JLPGA公式サイトのシーズン成績（部門別ランキング）に基づきます。`;
+
+    renderQuestions();
+    $("quiz").addEventListener("change", updateSubmitState);
+    $("quiz").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const answers = readAnswers();
+      if (answers) showResult(answers);
+    });
+    $("share-x").addEventListener("click", () => track("click/Xシェア"));
+    $("save-card").addEventListener("click", saveCard);
+    $("share-card").addEventListener("click", shareCard);
+    $("retry").addEventListener("click", () => {
+      track("click/もう一度");
+      $("quiz").reset();
+      $("result").hidden = true;
+      updateSubmitState();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    updateSubmitState();
+  }
+
+  init();
+</script>
+</body>
+</html>
