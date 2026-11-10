@@ -1,0 +1,1716 @@
+{
+ "tour": "JLPGA",
+ "year": "2026",
+ "stats": [
+  {
+   "key": "Distance",
+   "name": "パワー",
+   "type_label": "パワー型",
+   "color": "#E63946",
+   "catchphrase": "規格外の飛距離で魅せるパワーヒッター"
+  },
+  {
+   "key": "FW_Keep",
+   "name": "正確性",
+   "type_label": "正確性型",
+   "color": "#457B9D",
+   "catchphrase": "フェアウェイを外さない精密コントローラー"
+  },
+  {
+   "key": "Putts",
+   "name": "決定力",
+   "type_label": "決定力型",
+   "color": "#F1C40F",
+   "catchphrase": "外さない決定力でスコアメイク"
+  },
+  {
+   "key": "GIR",
+   "name": "安定感",
+   "type_label": "安定感型",
+   "color": "#2A9D8F",
+   "catchphrase": "崩れない安定感でグリーンを捉える"
+  }
+ ],
+ "players": [
+  {
+   "id": "1000639",
+   "name": "横峯 さくら",
+   "card": "cards/横峯さくら_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 56.5,
+    "FW_Keep": 40.8,
+    "Putts": 46.3,
+    "GIR": 43.8
+   },
+   "ranks": {
+    "Distance": "28",
+    "FW_Keep": "74",
+    "Putts": "59",
+    "GIR": "63"
+   },
+   "stats": {
+    "Distance": 243.93,
+    "FW_Keep": 60.67,
+    "Putts": 1.83,
+    "GIR": 63.49
+   }
+  },
+  {
+   "id": "1000679",
+   "name": "藤田 さいき",
+   "card": "cards/藤田さいき_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 61.0,
+    "FW_Keep": 50.0,
+    "Putts": 42.7,
+    "GIR": 52.6
+   },
+   "ranks": {
+    "Distance": "13",
+    "FW_Keep": "52",
+    "Putts": "71",
+    "GIR": "39"
+   },
+   "stats": {
+    "Distance": 247.75,
+    "FW_Keep": 66.75,
+    "Putts": 1.84,
+    "GIR": 67.1
+   }
+  },
+  {
+   "id": "1000684",
+   "name": "笠 りつ子",
+   "card": "cards/笠りつ子_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 52.0,
+    "FW_Keep": 57.4,
+    "Putts": 50.9,
+    "GIR": 53.9
+   },
+   "ranks": {
+    "Distance": "40",
+    "FW_Keep": "20",
+    "Putts": "42",
+    "GIR": "35"
+   },
+   "stats": {
+    "Distance": 240.13,
+    "FW_Keep": 71.56,
+    "Putts": 1.82,
+    "GIR": 67.62
+   }
+  },
+  {
+   "id": "1000695",
+   "name": "下川 めぐみ",
+   "card": "cards/下川めぐみ_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 34.6,
+    "FW_Keep": 55.4,
+    "Putts": 30.2,
+    "GIR": 41.4
+   },
+   "ranks": {
+    "Distance": "85",
+    "FW_Keep": "27",
+    "Putts": "87",
+    "GIR": "72"
+   },
+   "stats": {
+    "Distance": 225.27,
+    "FW_Keep": 70.25,
+    "Putts": 1.89,
+    "GIR": 62.52
+   }
+  },
+  {
+   "id": "1000709",
+   "name": "穴井 詩",
+   "card": "cards/穴井詩_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 74.5,
+    "FW_Keep": 33.5,
+    "Putts": 35.0,
+    "GIR": 63.7
+   },
+   "ranks": {
+    "Distance": "1",
+    "FW_Keep": "85",
+    "Putts": "84",
+    "GIR": "7"
+   },
+   "stats": {
+    "Distance": 259.28,
+    "FW_Keep": 55.85,
+    "Putts": 1.87,
+    "GIR": 71.66
+   }
+  },
+  {
+   "id": "1000716",
+   "name": "木戸 愛",
+   "card": "cards/木戸愛_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 50.4,
+    "FW_Keep": 53.3,
+    "Putts": 61.2,
+    "GIR": 60.6
+   },
+   "ranks": {
+    "Distance": "45",
+    "FW_Keep": "33",
+    "Putts": "14",
+    "GIR": "14"
+   },
+   "stats": {
+    "Distance": 238.76,
+    "FW_Keep": 68.92,
+    "Putts": 1.78,
+    "GIR": 70.37
+   }
+  },
+  {
+   "id": "1000780",
+   "name": "青木 瀬令奈",
+   "card": "cards/青木瀬令奈_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 32.5,
+    "FW_Keep": 61.9,
+    "Putts": 61.8,
+    "GIR": 39.6
+   },
+   "ranks": {
+    "Distance": "87",
+    "FW_Keep": "10",
+    "Putts": "12",
+    "GIR": "78"
+   },
+   "stats": {
+    "Distance": 223.43,
+    "FW_Keep": 74.54,
+    "Putts": 1.78,
+    "GIR": 61.8
+   }
+  },
+  {
+   "id": "1000799",
+   "name": "金田 久美子",
+   "card": "cards/金田久美子_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 37.7,
+    "FW_Keep": 42.4,
+    "Putts": 50.2,
+    "GIR": 43.5
+   },
+   "ranks": {
+    "Distance": "81",
+    "FW_Keep": "71",
+    "Putts": "46",
+    "GIR": "65"
+   },
+   "stats": {
+    "Distance": 227.91,
+    "FW_Keep": 61.7,
+    "Putts": 1.82,
+    "GIR": 63.39
+   }
+  },
+  {
+   "id": "1000823",
+   "name": "渡邉 彩香",
+   "card": "cards/渡邉彩香_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 61.5,
+    "FW_Keep": 14.0,
+    "Putts": 50.6,
+    "GIR": 35.2
+   },
+   "ranks": {
+    "Distance": "12",
+    "FW_Keep": "90",
+    "Putts": "45",
+    "GIR": "81"
+   },
+   "stats": {
+    "Distance": 248.19,
+    "FW_Keep": 43.05,
+    "Putts": 1.82,
+    "GIR": 60.01
+   }
+  },
+  {
+   "id": "1000833",
+   "name": "鈴木 愛",
+   "card": "cards/鈴木愛_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 52.6,
+    "FW_Keep": 50.7,
+    "Putts": 69.0,
+    "GIR": 51.0
+   },
+   "ranks": {
+    "Distance": "37",
+    "FW_Keep": "47",
+    "Putts": "4",
+    "GIR": "47"
+   },
+   "stats": {
+    "Distance": 240.58,
+    "FW_Keep": 67.2,
+    "Putts": 1.75,
+    "GIR": 66.45
+   }
+  },
+  {
+   "id": "1000912",
+   "name": "全 美貞",
+   "card": "cards/全美貞_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 53.1,
+    "FW_Keep": 50.5,
+    "Putts": 53.0,
+    "GIR": 47.6
+   },
+   "ranks": {
+    "Distance": "32",
+    "FW_Keep": "49",
+    "Putts": "35",
+    "GIR": "56"
+   },
+   "stats": {
+    "Distance": 241.02,
+    "FW_Keep": 67.02,
+    "Putts": 1.81,
+    "GIR": 65.08
+   }
+  },
+  {
+   "id": "1000921",
+   "name": "申 ジエ",
+   "card": "cards/申ジエ_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 52.6,
+    "FW_Keep": 59.4,
+    "Putts": 58.7,
+    "GIR": 60.7
+   },
+   "ranks": {
+    "Distance": "36",
+    "FW_Keep": "14",
+    "Putts": "17",
+    "GIR": "13"
+   },
+   "stats": {
+    "Distance": 240.64,
+    "FW_Keep": 72.91,
+    "Putts": 1.79,
+    "GIR": 70.4
+   }
+  },
+  {
+   "id": "1000930",
+   "name": "サイ ペイイン",
+   "card": "cards/サイペイイン_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 48.8,
+    "FW_Keep": 52.3,
+    "Putts": 49.4,
+    "GIR": 51.1
+   },
+   "ranks": {
+    "Distance": "50",
+    "FW_Keep": "41",
+    "Putts": "50",
+    "GIR": "46"
+   },
+   "stats": {
+    "Distance": 237.37,
+    "FW_Keep": 68.2,
+    "Putts": 1.82,
+    "GIR": 66.48
+   }
+  },
+  {
+   "id": "1002836",
+   "name": "沖 せいら",
+   "card": "cards/沖せいら_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 37.9,
+    "FW_Keep": 63.3,
+    "Putts": 45.1,
+    "GIR": 48.0
+   },
+   "ranks": {
+    "Distance": "80",
+    "FW_Keep": "7",
+    "Putts": "64",
+    "GIR": "53"
+   },
+   "stats": {
+    "Distance": 228.04,
+    "FW_Keep": 75.45,
+    "Putts": 1.84,
+    "GIR": 65.21
+   }
+  },
+  {
+   "id": "1002868",
+   "name": "川岸 史果",
+   "card": "cards/川岸史果_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 62.8,
+    "FW_Keep": 36.5,
+    "Putts": 45.9,
+    "GIR": 44.1
+   },
+   "ranks": {
+    "Distance": "7",
+    "FW_Keep": "83",
+    "Putts": "61",
+    "GIR": "62"
+   },
+   "stats": {
+    "Distance": 249.33,
+    "FW_Keep": 57.82,
+    "Putts": 1.83,
+    "GIR": 63.64
+   }
+  },
+  {
+   "id": "1002877",
+   "name": "森田 遥",
+   "card": "cards/森田遥_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 42.7,
+    "FW_Keep": 46.2,
+    "Putts": 52.8,
+    "GIR": 41.5
+   },
+   "ranks": {
+    "Distance": "69",
+    "FW_Keep": "66",
+    "Putts": "36",
+    "GIR": "71"
+   },
+   "stats": {
+    "Distance": 232.19,
+    "FW_Keep": 64.24,
+    "Putts": 1.81,
+    "GIR": 62.58
+   }
+  },
+  {
+   "id": "1002914",
+   "name": "ささき しょうこ",
+   "card": "cards/ささきしょうこ_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 38.9,
+    "FW_Keep": 58.8,
+    "Putts": 55.9,
+    "GIR": 39.3
+   },
+   "ranks": {
+    "Distance": "75",
+    "FW_Keep": "16",
+    "Putts": "24",
+    "GIR": "79"
+   },
+   "stats": {
+    "Distance": 228.92,
+    "FW_Keep": 72.52,
+    "Putts": 1.8,
+    "GIR": 61.69
+   }
+  },
+  {
+   "id": "1002917",
+   "name": "永峰 咲希",
+   "card": "cards/永峰咲希_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 50.3,
+    "FW_Keep": 46.3,
+    "Putts": 49.8,
+    "GIR": 47.7
+   },
+   "ranks": {
+    "Distance": "46",
+    "FW_Keep": "65",
+    "Putts": "48",
+    "GIR": "55"
+   },
+   "stats": {
+    "Distance": 238.69,
+    "FW_Keep": 64.3,
+    "Putts": 1.82,
+    "GIR": 65.09
+   }
+  },
+  {
+   "id": "1002919",
+   "name": "森井 あやめ",
+   "card": "cards/森井あやめ_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 40.8,
+    "FW_Keep": 66.0,
+    "Putts": 46.2,
+    "GIR": 58.2
+   },
+   "ranks": {
+    "Distance": "73",
+    "FW_Keep": "2",
+    "Putts": "60",
+    "GIR": "23"
+   },
+   "stats": {
+    "Distance": 230.54,
+    "FW_Keep": 77.23,
+    "Putts": 1.83,
+    "GIR": 69.41
+   }
+  },
+  {
+   "id": "1002962",
+   "name": "永井 花奈",
+   "card": "cards/永井花奈_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 45.7,
+    "FW_Keep": 56.7,
+    "Putts": 60.9,
+    "GIR": 60.9
+   },
+   "ranks": {
+    "Distance": "63",
+    "FW_Keep": "21",
+    "Putts": "15",
+    "GIR": "12"
+   },
+   "stats": {
+    "Distance": 234.77,
+    "FW_Keep": 71.12,
+    "Putts": 1.78,
+    "GIR": 70.51
+   }
+  },
+  {
+   "id": "1002966",
+   "name": "安田 彩乃",
+   "card": "cards/安田彩乃_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 41.4,
+    "FW_Keep": 47.8,
+    "Putts": 36.8,
+    "GIR": 32.5
+   },
+   "ranks": {
+    "Distance": "71",
+    "FW_Keep": "63",
+    "Putts": "83",
+    "GIR": "86"
+   },
+   "stats": {
+    "Distance": 231.06,
+    "FW_Keep": 65.24,
+    "Putts": 1.86,
+    "GIR": 58.89
+   }
+  },
+  {
+   "id": "1002975",
+   "name": "堀 琴音",
+   "card": "cards/堀琴音_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 36.8,
+    "FW_Keep": 60.2,
+    "Putts": 47.2,
+    "GIR": 55.3
+   },
+   "ranks": {
+    "Distance": "82",
+    "FW_Keep": "13",
+    "Putts": "53",
+    "GIR": "31"
+   },
+   "stats": {
+    "Distance": 227.17,
+    "FW_Keep": 73.42,
+    "Putts": 1.83,
+    "GIR": 68.22
+   }
+  },
+  {
+   "id": "1002990",
+   "name": "岡山 絵里",
+   "card": "cards/岡山絵里_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 49.7,
+    "FW_Keep": 54.0,
+    "Putts": 53.2,
+    "GIR": 57.0
+   },
+   "ranks": {
+    "Distance": "47",
+    "FW_Keep": "31",
+    "Putts": "34",
+    "GIR": "29"
+   },
+   "stats": {
+    "Distance": 238.12,
+    "FW_Keep": 69.37,
+    "Putts": 1.81,
+    "GIR": 68.89
+   }
+  },
+  {
+   "id": "1002994",
+   "name": "蛭田 みな美",
+   "card": "cards/蛭田みな美_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 52.1,
+    "FW_Keep": 50.0,
+    "Putts": 44.8,
+    "GIR": 59.4
+   },
+   "ranks": {
+    "Distance": "39",
+    "FW_Keep": "53",
+    "Putts": "66",
+    "GIR": "15"
+   },
+   "stats": {
+    "Distance": 240.15,
+    "FW_Keep": 66.72,
+    "Putts": 1.84,
+    "GIR": 69.88
+   }
+  },
+  {
+   "id": "1002999",
+   "name": "河本 結",
+   "card": "cards/河本結_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 51.1,
+    "FW_Keep": 50.2,
+    "Putts": 70.8,
+    "GIR": 54.7
+   },
+   "ranks": {
+    "Distance": "43",
+    "FW_Keep": "51",
+    "Putts": "1",
+    "GIR": "32"
+   },
+   "stats": {
+    "Distance": 239.37,
+    "FW_Keep": 66.82,
+    "Putts": 1.75,
+    "GIR": 67.97
+   }
+  },
+  {
+   "id": "1003010",
+   "name": "大里 桃子",
+   "card": "cards/大里桃子_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 38.9,
+    "FW_Keep": 30.8,
+    "Putts": 44.1,
+    "GIR": 36.6
+   },
+   "ranks": {
+    "Distance": "76",
+    "FW_Keep": "87",
+    "Putts": "68",
+    "GIR": "80"
+   },
+   "stats": {
+    "Distance": 228.91,
+    "FW_Keep": 54.08,
+    "Putts": 1.84,
+    "GIR": 60.56
+   }
+  },
+  {
+   "id": "1003021",
+   "name": "権藤 可恋",
+   "card": "cards/権藤可恋_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 38.3,
+    "FW_Keep": 52.4,
+    "Putts": 31.7,
+    "GIR": 33.3
+   },
+   "ranks": {
+    "Distance": "79",
+    "FW_Keep": "39",
+    "Putts": "86",
+    "GIR": "85"
+   },
+   "stats": {
+    "Distance": 228.41,
+    "FW_Keep": 68.28,
+    "Putts": 1.88,
+    "GIR": 59.23
+   }
+  },
+  {
+   "id": "1003024",
+   "name": "天本 ハルカ",
+   "card": "cards/天本ハルカ_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 51.7,
+    "FW_Keep": 55.7,
+    "Putts": 46.9,
+    "GIR": 58.5
+   },
+   "ranks": {
+    "Distance": "41",
+    "FW_Keep": "26",
+    "Putts": "56",
+    "GIR": "20"
+   },
+   "stats": {
+    "Distance": 239.82,
+    "FW_Keep": 70.48,
+    "Putts": 1.83,
+    "GIR": 69.5
+   }
+  },
+  {
+   "id": "1003025",
+   "name": "三ヶ島 かな",
+   "card": "cards/三ヶ島かな_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 46.7,
+    "FW_Keep": 52.8,
+    "Putts": 40.5,
+    "GIR": 50.8
+   },
+   "ranks": {
+    "Distance": "60",
+    "FW_Keep": "35",
+    "Putts": "77",
+    "GIR": "48"
+   },
+   "stats": {
+    "Distance": 235.6,
+    "FW_Keep": 68.59,
+    "Putts": 1.85,
+    "GIR": 66.38
+   }
+  },
+  {
+   "id": "1003039",
+   "name": "大出 瑞月",
+   "card": "cards/大出瑞月_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 43.5,
+    "FW_Keep": 61.5,
+    "Putts": 52.2,
+    "GIR": 49.2
+   },
+   "ranks": {
+    "Distance": "68",
+    "FW_Keep": "12",
+    "Putts": "38",
+    "GIR": "52"
+   },
+   "stats": {
+    "Distance": 232.83,
+    "FW_Keep": 74.3,
+    "Putts": 1.81,
+    "GIR": 65.71
+   }
+  },
+  {
+   "id": "1003043",
+   "name": "政田 夢乃",
+   "card": "cards/政田夢乃_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 47.2,
+    "FW_Keep": 52.3,
+    "Putts": 54.3,
+    "GIR": 58.3
+   },
+   "ranks": {
+    "Distance": "56",
+    "FW_Keep": "40",
+    "Putts": "31",
+    "GIR": "22"
+   },
+   "stats": {
+    "Distance": 236.01,
+    "FW_Keep": 68.2,
+    "Putts": 1.8,
+    "GIR": 69.42
+   }
+  },
+  {
+   "id": "1003706",
+   "name": "山城 奈々",
+   "card": "cards/山城奈々_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 60.0,
+    "FW_Keep": 37.6,
+    "Putts": 47.0,
+    "GIR": 51.4
+   },
+   "ranks": {
+    "Distance": "16",
+    "FW_Keep": "81",
+    "Putts": "54",
+    "GIR": "45"
+   },
+   "stats": {
+    "Distance": 246.97,
+    "FW_Keep": 58.56,
+    "Putts": 1.83,
+    "GIR": 66.61
+   }
+  },
+  {
+   "id": "1004190",
+   "name": "高橋 彩華",
+   "card": "cards/高橋彩華_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 47.4,
+    "FW_Keep": 58.5,
+    "Putts": 49.2,
+    "GIR": 61.9
+   },
+   "ranks": {
+    "Distance": "55",
+    "FW_Keep": "18",
+    "Putts": "51",
+    "GIR": "10"
+   },
+   "stats": {
+    "Distance": 236.19,
+    "FW_Keep": 72.3,
+    "Putts": 1.82,
+    "GIR": 70.89
+   }
+  },
+  {
+   "id": "1004256",
+   "name": "後藤 未有",
+   "card": "cards/後藤未有_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 45.8,
+    "FW_Keep": 52.0,
+    "Putts": 33.1,
+    "GIR": 39.9
+   },
+   "ranks": {
+    "Distance": "62",
+    "FW_Keep": "42",
+    "Putts": "85",
+    "GIR": "76"
+   },
+   "stats": {
+    "Distance": 234.8,
+    "FW_Keep": 68.02,
+    "Putts": 1.88,
+    "GIR": 61.92
+   }
+  },
+  {
+   "id": "1004257",
+   "name": "稲見 萌寧",
+   "card": "cards/稲見萌寧_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 51.2,
+    "FW_Keep": 55.1,
+    "Putts": 27.8,
+    "GIR": 23.0
+   },
+   "ranks": {
+    "Distance": "42",
+    "FW_Keep": "28",
+    "Putts": "89",
+    "GIR": "90"
+   },
+   "stats": {
+    "Distance": 239.43,
+    "FW_Keep": 70.05,
+    "Putts": 1.9,
+    "GIR": 55.03
+   }
+  },
+  {
+   "id": "1004258",
+   "name": "金澤 志奈",
+   "card": "cards/金澤志奈_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 36.3,
+    "FW_Keep": 65.4,
+    "Putts": 63.5,
+    "GIR": 53.7
+   },
+   "ranks": {
+    "Distance": "83",
+    "FW_Keep": "5",
+    "Putts": "9",
+    "GIR": "36"
+   },
+   "stats": {
+    "Distance": 226.73,
+    "FW_Keep": 76.84,
+    "Putts": 1.77,
+    "GIR": 67.55
+   }
+  },
+  {
+   "id": "1004298",
+   "name": "吉本 ここね",
+   "card": "cards/吉本ここね_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 29.9,
+    "FW_Keep": 69.8,
+    "Putts": 56.9,
+    "GIR": 56.9
+   },
+   "ranks": {
+    "Distance": "88",
+    "FW_Keep": "1",
+    "Putts": "19",
+    "GIR": "30"
+   },
+   "stats": {
+    "Distance": 221.25,
+    "FW_Keep": 79.75,
+    "Putts": 1.79,
+    "GIR": 68.87
+   }
+  },
+  {
+   "id": "1004306",
+   "name": "髙木 優奈",
+   "card": "cards/髙木優奈_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 47.6,
+    "FW_Keep": 55.9,
+    "Putts": 41.3,
+    "GIR": 61.1
+   },
+   "ranks": {
+    "Distance": "54",
+    "FW_Keep": "24",
+    "Putts": "74",
+    "GIR": "11"
+   },
+   "stats": {
+    "Distance": 236.33,
+    "FW_Keep": 70.61,
+    "Putts": 1.85,
+    "GIR": 70.58
+   }
+  },
+  {
+   "id": "1004345",
+   "name": "阿部 未悠",
+   "card": "cards/阿部未悠_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 54.0,
+    "FW_Keep": 54.9,
+    "Putts": 56.2,
+    "GIR": 58.5
+   },
+   "ranks": {
+    "Distance": "31",
+    "FW_Keep": "29",
+    "Putts": "20",
+    "GIR": "19"
+   },
+   "stats": {
+    "Distance": 241.83,
+    "FW_Keep": 69.95,
+    "Putts": 1.8,
+    "GIR": 69.51
+   }
+  },
+  {
+   "id": "1004810",
+   "name": "イ ミニョン",
+   "card": "cards/イミニョン_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 58.8,
+    "FW_Keep": 51.9,
+    "Putts": 56.1,
+    "GIR": 58.7
+   },
+   "ranks": {
+    "Distance": "19",
+    "FW_Keep": "43",
+    "Putts": "21",
+    "GIR": "18"
+   },
+   "stats": {
+    "Distance": 245.91,
+    "FW_Keep": 67.98,
+    "Putts": 1.8,
+    "GIR": 69.61
+   }
+  },
+  {
+   "id": "1004999",
+   "name": "菅沼 菜々",
+   "card": "cards/菅沼菜々_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 61.9,
+    "FW_Keep": 43.3,
+    "Putts": 51.8,
+    "GIR": 57.0
+   },
+   "ranks": {
+    "Distance": "11",
+    "FW_Keep": "68",
+    "Putts": "40",
+    "GIR": "28"
+   },
+   "stats": {
+    "Distance": 248.55,
+    "FW_Keep": 62.33,
+    "Putts": 1.81,
+    "GIR": 68.92
+   }
+  },
+  {
+   "id": "1005013",
+   "name": "髙久 みなみ",
+   "card": "cards/髙久みなみ_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 47.0,
+    "FW_Keep": 52.7,
+    "Putts": 40.7,
+    "GIR": 40.1
+   },
+   "ranks": {
+    "Distance": "58",
+    "FW_Keep": "37",
+    "Putts": "75",
+    "GIR": "75"
+   },
+   "stats": {
+    "Distance": 235.88,
+    "FW_Keep": 68.51,
+    "Putts": 1.85,
+    "GIR": 61.98
+   }
+  },
+  {
+   "id": "1005197",
+   "name": "山路 晶",
+   "card": "cards/山路晶_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 64.6,
+    "FW_Keep": 40.7,
+    "Putts": 45.7,
+    "GIR": 57.4
+   },
+   "ranks": {
+    "Distance": "5",
+    "FW_Keep": "75",
+    "Putts": "63",
+    "GIR": "26"
+   },
+   "stats": {
+    "Distance": 250.89,
+    "FW_Keep": 60.59,
+    "Putts": 1.83,
+    "GIR": 69.07
+   }
+  },
+  {
+   "id": "1005400",
+   "name": "神谷 そら",
+   "card": "cards/神谷そら_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 67.2,
+    "FW_Keep": 24.5,
+    "Putts": 56.0,
+    "GIR": 54.1
+   },
+   "ranks": {
+    "Distance": "3",
+    "FW_Keep": "89",
+    "Putts": "22",
+    "GIR": "33"
+   },
+   "stats": {
+    "Distance": 253.12,
+    "FW_Keep": 49.93,
+    "Putts": 1.8,
+    "GIR": 67.71
+   }
+  },
+  {
+   "id": "1005433",
+   "name": "内田 ことこ",
+   "card": "cards/内田ことこ_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 58.6,
+    "FW_Keep": 38.1,
+    "Putts": 52.2,
+    "GIR": 31.7
+   },
+   "ranks": {
+    "Distance": "20",
+    "FW_Keep": "80",
+    "Putts": "39",
+    "GIR": "89"
+   },
+   "stats": {
+    "Distance": 245.72,
+    "FW_Keep": 58.86,
+    "Putts": 1.81,
+    "GIR": 58.57
+   }
+  },
+  {
+   "id": "1005435",
+   "name": "安田 祐香",
+   "card": "cards/安田祐香_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 52.7,
+    "FW_Keep": 50.3,
+    "Putts": 56.0,
+    "GIR": 64.7
+   },
+   "ranks": {
+    "Distance": "35",
+    "FW_Keep": "50",
+    "Putts": "23",
+    "GIR": "6"
+   },
+   "stats": {
+    "Distance": 240.71,
+    "FW_Keep": 66.94,
+    "Putts": 1.8,
+    "GIR": 72.06
+   }
+  },
+  {
+   "id": "1005446",
+   "name": "佐久間 朱莉",
+   "card": "cards/佐久間朱莉_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 63.1,
+    "FW_Keep": 62.3,
+    "Putts": 64.1,
+    "GIR": 71.5
+   },
+   "ranks": {
+    "Distance": "6",
+    "FW_Keep": "9",
+    "Putts": "7",
+    "GIR": "1"
+   },
+   "stats": {
+    "Distance": 249.55,
+    "FW_Keep": 74.78,
+    "Putts": 1.77,
+    "GIR": 74.84
+   }
+  },
+  {
+   "id": "1005447",
+   "name": "稲垣 那奈子",
+   "card": "cards/稲垣那奈子_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 62.5,
+    "FW_Keep": 39.2,
+    "Putts": 46.8,
+    "GIR": 51.8
+   },
+   "ranks": {
+    "Distance": "9",
+    "FW_Keep": "76",
+    "Putts": "57",
+    "GIR": "42"
+   },
+   "stats": {
+    "Distance": 249.1,
+    "FW_Keep": 59.61,
+    "Putts": 1.83,
+    "GIR": 66.78
+   }
+  },
+  {
+   "id": "1005594",
+   "name": "藤田 かれん",
+   "card": "cards/藤田かれん_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 62.5,
+    "FW_Keep": 48.9,
+    "Putts": 51.3,
+    "GIR": 50.6
+   },
+   "ranks": {
+    "Distance": "8",
+    "FW_Keep": "58",
+    "Putts": "41",
+    "GIR": "50"
+   },
+   "stats": {
+    "Distance": 249.11,
+    "FW_Keep": 65.98,
+    "Putts": 1.81,
+    "GIR": 66.3
+   }
+  },
+  {
+   "id": "1005661",
+   "name": "泉田 琴菜",
+   "card": "cards/泉田琴菜_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 49.4,
+    "FW_Keep": 31.8,
+    "Putts": 45.1,
+    "GIR": 34.5
+   },
+   "ranks": {
+    "Distance": "48",
+    "FW_Keep": "86",
+    "Putts": "65",
+    "GIR": "83"
+   },
+   "stats": {
+    "Distance": 237.91,
+    "FW_Keep": 54.73,
+    "Putts": 1.84,
+    "GIR": 59.71
+   }
+  },
+  {
+   "id": "1005702",
+   "name": "尾関 彩美悠",
+   "card": "cards/尾関彩美悠_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 47.9,
+    "FW_Keep": 50.6,
+    "Putts": 59.3,
+    "GIR": 41.7
+   },
+   "ranks": {
+    "Distance": "52",
+    "FW_Keep": "48",
+    "Putts": "16",
+    "GIR": "70"
+   },
+   "stats": {
+    "Distance": 236.62,
+    "FW_Keep": 67.1,
+    "Putts": 1.79,
+    "GIR": 62.66
+   }
+  },
+  {
+   "id": "1006020",
+   "name": "桑木 志帆",
+   "card": "cards/桑木志帆_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 57.0,
+    "FW_Keep": 65.4,
+    "Putts": 67.0,
+    "GIR": 66.6
+   },
+   "ranks": {
+    "Distance": "26",
+    "FW_Keep": "6",
+    "Putts": "5",
+    "GIR": "2"
+   },
+   "stats": {
+    "Distance": 244.38,
+    "FW_Keep": 76.82,
+    "Putts": 1.76,
+    "GIR": 72.84
+   }
+  },
+  {
+   "id": "1006036",
+   "name": "都 玲華",
+   "card": "cards/都玲華_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 53.0,
+    "FW_Keep": 49.6,
+    "Putts": 55.3,
+    "GIR": 47.7
+   },
+   "ranks": {
+    "Distance": "33",
+    "FW_Keep": "54",
+    "Putts": "29",
+    "GIR": "54"
+   },
+   "stats": {
+    "Distance": 241.0,
+    "FW_Keep": 66.44,
+    "Putts": 1.8,
+    "GIR": 65.12
+   }
+  },
+  {
+   "id": "1006047",
+   "name": "川﨑 春花",
+   "card": "cards/川﨑春花_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 52.8,
+    "FW_Keep": 48.8,
+    "Putts": 44.2,
+    "GIR": 47.2
+   },
+   "ranks": {
+    "Distance": "34",
+    "FW_Keep": "59",
+    "Putts": "67",
+    "GIR": "57"
+   },
+   "stats": {
+    "Distance": 240.78,
+    "FW_Keep": 65.91,
+    "Putts": 1.84,
+    "GIR": 64.88
+   }
+  },
+  {
+   "id": "1006452",
+   "name": "仲村 果乃",
+   "card": "cards/仲村果乃_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 58.5,
+    "FW_Keep": 52.9,
+    "Putts": 55.7,
+    "GIR": 65.0
+   },
+   "ranks": {
+    "Distance": "21",
+    "FW_Keep": "34",
+    "Putts": "26",
+    "GIR": "5"
+   },
+   "stats": {
+    "Distance": 245.67,
+    "FW_Keep": 68.61,
+    "Putts": 1.8,
+    "GIR": 72.17
+   }
+  },
+  {
+   "id": "1006612",
+   "name": "寺岡 沙弥香",
+   "card": "cards/寺岡沙弥香_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 45.5,
+    "FW_Keep": 38.5,
+    "Putts": 29.0,
+    "GIR": 39.7
+   },
+   "ranks": {
+    "Distance": "64",
+    "FW_Keep": "78",
+    "Putts": "88",
+    "GIR": "77"
+   },
+   "stats": {
+    "Distance": 234.52,
+    "FW_Keep": 59.15,
+    "Putts": 1.89,
+    "GIR": 61.85
+   }
+  },
+  {
+   "id": "1006650",
+   "name": "吉田 鈴",
+   "card": "cards/吉田鈴_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 45.9,
+    "FW_Keep": 55.8,
+    "Putts": 61.8,
+    "GIR": 51.9
+   },
+   "ranks": {
+    "Distance": "61",
+    "FW_Keep": "25",
+    "Putts": "11",
+    "GIR": "40"
+   },
+   "stats": {
+    "Distance": 234.93,
+    "FW_Keep": 70.53,
+    "Putts": 1.78,
+    "GIR": 66.83
+   }
+  },
+  {
+   "id": "1006652",
+   "name": "吉澤 柚月",
+   "card": "cards/吉澤柚月_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 47.1,
+    "FW_Keep": 53.5,
+    "Putts": 64.2,
+    "GIR": 58.0
+   },
+   "ranks": {
+    "Distance": "57",
+    "FW_Keep": "32",
+    "Putts": "6",
+    "GIR": "24"
+   },
+   "stats": {
+    "Distance": 235.96,
+    "FW_Keep": 69.01,
+    "Putts": 1.77,
+    "GIR": 69.33
+   }
+  },
+  {
+   "id": "1006684",
+   "name": "ウー チャイェン",
+   "card": "cards/ウーチャイェン_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 56.4,
+    "FW_Keep": 49.3,
+    "Putts": 55.8,
+    "GIR": 66.3
+   },
+   "ranks": {
+    "Distance": "29",
+    "FW_Keep": "56",
+    "Putts": "25",
+    "GIR": "3"
+   },
+   "stats": {
+    "Distance": 243.86,
+    "FW_Keep": 66.23,
+    "Putts": 1.8,
+    "GIR": 72.69
+   }
+  },
+  {
+   "id": "1006708",
+   "name": "佐藤 心結",
+   "card": "cards/佐藤心結_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 57.3,
+    "FW_Keep": 50.9,
+    "Putts": 46.3,
+    "GIR": 57.4
+   },
+   "ranks": {
+    "Distance": "25",
+    "FW_Keep": "46",
+    "Putts": "58",
+    "GIR": "25"
+   },
+   "stats": {
+    "Distance": 244.64,
+    "FW_Keep": 67.33,
+    "Putts": 1.83,
+    "GIR": 69.09
+   }
+  },
+  {
+   "id": "1006728",
+   "name": "荒木 優奈",
+   "card": "cards/荒木優奈_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 59.1,
+    "FW_Keep": 48.2,
+    "Putts": 69.5,
+    "GIR": 57.4
+   },
+   "ranks": {
+    "Distance": "18",
+    "FW_Keep": "60",
+    "Putts": "3",
+    "GIR": "27"
+   },
+   "stats": {
+    "Distance": 246.19,
+    "FW_Keep": 65.55,
+    "Putts": 1.75,
+    "GIR": 69.06
+   }
+  },
+  {
+   "id": "1006785",
+   "name": "小林 光希",
+   "card": "cards/小林光希_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 57.5,
+    "FW_Keep": 52.8,
+    "Putts": 61.8,
+    "GIR": 59.2
+   },
+   "ranks": {
+    "Distance": "24",
+    "FW_Keep": "36",
+    "Putts": "13",
+    "GIR": "16"
+   },
+   "stats": {
+    "Distance": 244.84,
+    "FW_Keep": 68.53,
+    "Putts": 1.78,
+    "GIR": 69.81
+   }
+  },
+  {
+   "id": "1007103",
+   "name": "入谷 響",
+   "card": "cards/入谷響_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 60.6,
+    "FW_Keep": 30.5,
+    "Putts": 54.0,
+    "GIR": 43.5
+   },
+   "ranks": {
+    "Distance": "14",
+    "FW_Keep": "88",
+    "Putts": "32",
+    "GIR": "64"
+   },
+   "stats": {
+    "Distance": 247.47,
+    "FW_Keep": 53.87,
+    "Putts": 1.8,
+    "GIR": 63.39
+   }
+  },
+  {
+   "id": "1007125",
+   "name": "髙野 愛姫",
+   "card": "cards/髙野愛姫_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 50.9,
+    "FW_Keep": 59.1,
+    "Putts": 52.6,
+    "GIR": 62.9
+   },
+   "ranks": {
+    "Distance": "44",
+    "FW_Keep": "15",
+    "Putts": "37",
+    "GIR": "8"
+   },
+   "stats": {
+    "Distance": 239.2,
+    "FW_Keep": 72.68,
+    "Putts": 1.81,
+    "GIR": 71.3
+   }
+  },
+  {
+   "id": "1007211",
+   "name": "菅 楓華",
+   "card": "cards/菅楓華_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 45.4,
+    "FW_Keep": 56.6,
+    "Putts": 70.2,
+    "GIR": 62.8
+   },
+   "ranks": {
+    "Distance": "65",
+    "FW_Keep": "22",
+    "Putts": "2",
+    "GIR": "9"
+   },
+   "stats": {
+    "Distance": 234.5,
+    "FW_Keep": 71.07,
+    "Putts": 1.75,
+    "GIR": 71.28
+   }
+  },
+  {
+   "id": "1007184",
+   "name": "藤本 愛菜",
+   "card": "cards/藤本愛菜_2026.png",
+   "type": "GIR",
+   "scores": {
+    "Distance": 49.4,
+    "FW_Keep": 51.3,
+    "Putts": 54.0,
+    "GIR": 66.0
+   },
+   "ranks": {
+    "Distance": "49",
+    "FW_Keep": "44",
+    "Putts": "33",
+    "GIR": "4"
+   },
+   "stats": {
+    "Distance": 237.88,
+    "FW_Keep": 67.58,
+    "Putts": 1.81,
+    "GIR": 72.59
+   }
+  },
+  {
+   "id": "1007198",
+   "name": "倉林 紅",
+   "card": "cards/倉林紅_2026.png",
+   "type": "Distance",
+   "scores": {
+    "Distance": 59.4,
+    "FW_Keep": 44.6,
+    "Putts": 58.0,
+    "GIR": 53.9
+   },
+   "ranks": {
+    "Distance": "17",
+    "FW_Keep": "67",
+    "Putts": "18",
+    "GIR": "34"
+   },
+   "stats": {
+    "Distance": 246.43,
+    "FW_Keep": 63.19,
+    "Putts": 1.79,
+    "GIR": 67.64
+   }
+  },
+  {
+   "id": "1006712",
+   "name": "宮澤 美咲",
+   "card": "cards/宮澤美咲_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 43.8,
+    "FW_Keep": 61.6,
+    "Putts": 55.3,
+    "GIR": 58.4
+   },
+   "ranks": {
+    "Distance": "67",
+    "FW_Keep": "11",
+    "Putts": "28",
+    "GIR": "21"
+   },
+   "stats": {
+    "Distance": 233.08,
+    "FW_Keep": 74.32,
+    "Putts": 1.8,
+    "GIR": 69.47
+   }
+  },
+  {
+   "id": "1003044",
+   "name": "小祝 さくら",
+   "card": "cards/小祝さくら_2026.png",
+   "type": "Putts",
+   "scores": {
+    "Distance": 60.1,
+    "FW_Keep": 38.7,
+    "Putts": 64.1,
+    "GIR": 52.8
+   },
+   "ranks": {
+    "Distance": "15",
+    "FW_Keep": "77",
+    "Putts": "8",
+    "GIR": "38"
+   },
+   "stats": {
+    "Distance": 246.98,
+    "FW_Keep": 59.25,
+    "Putts": 1.77,
+    "GIR": 67.18
+   }
+  },
+  {
+   "id": "1003649",
+   "name": "仲宗根 澄香",
+   "card": "cards/仲宗根澄香_2026.png",
+   "type": "FW_Keep",
+   "scores": {
+    "Distance": 40.9,
+    "FW_Keep": 56.6,
+    "Putts": 50.6,
+    "GIR": 51.9
+   },
+   "ranks": {
+    "Distance": "72",
+    "FW_Keep": "23",
+    "Putts": "44",
+    "GIR": "41"
+   },
+   "stats": {
+    "Distance": 230.66,
+    "FW_Keep": 71.04,
+    "Putts": 1.82,
+    "GIR": 66.81
+   }
+  }
+ ]
+}
